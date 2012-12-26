@@ -2,6 +2,7 @@ TARGETS	= framer
 PREFIX	= /usr/local
 DESTDIR	=
 BINDIR	= $(PREFIX)/bin
+SBINDIR	= $(PREFIX)/sbin
 CC	?= cc
 CPPFLAGSF?=
 CPPFLAGS= -I $(PREFIX)/include
