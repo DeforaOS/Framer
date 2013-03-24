@@ -12,7 +12,7 @@ LDFLAGSF= `pkg-config --libs x11 gtk+-2.0`
 LDFLAGS	= -L$(PREFIX)/lib -Wl,-rpath,$(PREFIX)/lib
 RM	= rm -f
 LN	= ln -f
-MKDIR	= mkdir -p
+MKDIR	= mkdir -m 0755 -p
 INSTALL	= install
 
 
