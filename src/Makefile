@@ -39,7 +39,7 @@ distclean: clean
 
 install: $(TARGETS)
 	$(MKDIR) $(DESTDIR)$(BINDIR)
-	$(INSTALL) -m 0755 -- framer $(DESTDIR)$(BINDIR)/framer
+	$(INSTALL) -m 0755 framer $(DESTDIR)$(BINDIR)/framer
 
 uninstall:
 	$(RM) -- $(DESTDIR)$(BINDIR)/framer
