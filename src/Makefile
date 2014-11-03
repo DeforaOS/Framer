@@ -1,4 +1,5 @@
-TARGETS	= framer
+TARGETS	= $(OBJDIR)framer
+OBJDIR	=
 PREFIX	= /usr/local
 DESTDIR	=
 BINDIR	= $(PREFIX)/bin
@@ -18,18 +19,18 @@ INSTALL	= install
 
 all: $(TARGETS)
 
-framer_OBJS = framer.o main.o
+framer_OBJS = $(OBJDIR)framer.o $(OBJDIR)main.o
 framer_CFLAGS = $(CPPFLAGSF) $(CPPFLAGS) $(CFLAGSF) $(CFLAGS)
 framer_LDFLAGS = $(LDFLAGSF) $(LDFLAGS)
 
-framer: $(framer_OBJS)
-	$(CC) -o framer $(framer_OBJS) $(framer_LDFLAGS)
+$(OBJDIR)framer: $(framer_OBJS)
+	$(CC) -o $(OBJDIR)framer $(framer_OBJS) $(framer_LDFLAGS)
 
-framer.o: framer.c
-	$(CC) $(framer_CFLAGS) -c framer.c
+$(OBJDIR)framer.o: framer.c
+	$(CC) $(framer_CFLAGS) -o $(OBJDIR)framer.o -c framer.c
 
-main.o: main.c
-	$(CC) $(framer_CFLAGS) -c main.c
+$(OBJDIR)main.o: main.c
+	$(CC) $(framer_CFLAGS) -o $(OBJDIR)main.o -c main.c
 
 clean:
 	$(RM) -- $(framer_OBJS)
@@ -39,7 +40,7 @@ distclean: clean
 
 install: $(TARGETS)
 	$(MKDIR) $(DESTDIR)$(BINDIR)
-	$(INSTALL) -m 0755 framer $(DESTDIR)$(BINDIR)/framer
+	$(INSTALL) -m 0755 $(OBJDIR)framer $(DESTDIR)$(BINDIR)/framer
 
 uninstall:
 	$(RM) -- $(DESTDIR)$(BINDIR)/framer
